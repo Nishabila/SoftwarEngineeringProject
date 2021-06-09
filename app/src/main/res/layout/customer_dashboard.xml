@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:id="@+id/linearLayout2cs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="62dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_margin="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/UserNameos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/login"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Customer Of Al Muhtazibah System"
+                    android:textStyle="italic"
+                    android:textColor="@color/teal_700"
+                    android:layout_margin="15dp"
+                    android:textColorHighlight="@color/purple_200"/>
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/reviewadd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Want to add Add Review!!"
+                android:textColor="@color/black"
+                android:textStyle="italic"
+                android:background="@color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="100dp"
+                android:textColorHighlight="@color/teal_700"/>
+
+
+
+            <Button
+                android:id="@+id/logoutCS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log Out"
+                android:textColor="@color/black"
+                android:textStyle="italic"
+                android:background="@color/white"
+                android:layout_marginTop="80dp"
+                android:layout_gravity="center"
+                android:textColorHighlight="@color/teal_700"
+                style="@style/Widget.MaterialComponents.Button.Icon"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_navigation"
+        app:itemBackground="@color/design_default_color_on_primary"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu_navigation"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

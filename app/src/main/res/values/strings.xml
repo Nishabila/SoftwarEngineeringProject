@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AlMuhtazibah</string>
+    <string-array name="COLORNAME">
+        <item>Red </item>
+        <item>Black</item>
+        <item>Pink</item>
+        <item>White</item>
+        <item>Dark Blue</item>
+        <item>Brown</item>
+        <item>Off White</item>
+        <item>Grey</item>
+        <item>Blue</item>
+        <item>Peach</item>
+
+
+    </string-array>
+</resources>

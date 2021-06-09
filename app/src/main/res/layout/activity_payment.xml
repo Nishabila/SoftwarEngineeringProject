@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+           >
+
+
+            <TextView
+                android:id="@+id/selectPayment"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="Select Your Order Option"
+                android:textSize="25dp"
+
+                android:paddingTop="20dp"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/bikashbtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="175dp"
+                android:layout_height="63dp"
+                android:text="Bkash"
+                android:textColor="#E41259"
+                app:icon="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="20dp" />
+
+
+
+            <EditText
+                android:id="@+id/ed_BikashPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:hint="Enter Your Bikash Number"
+                style="@style/Theme.MaterialComponents.Light.NoActionBar"
+                android:inputType="numberDecimal"
+                app:startIconDrawable="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="20sp" />
+
+
+
+
+            <Button
+                android:id="@+id/CreditCard"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="180dp"
+                android:layout_height="63dp"
+                android:text="Credit Card"
+                android:textColor="#E41259"
+                android:textSize="17dp"
+                app:icon="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+            <EditText
+                android:id="@+id/ed_CreditcardName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:hint="Enter Your Credit Card Name"
+                style="@style/Theme.MaterialComponents.Light.NoActionBar"
+                android:inputType="text"
+                app:startIconDrawable="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/ed_CreditcardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:hint="Enter Your Credit Card Number"
+                style="@style/Theme.MaterialComponents.Light.NoActionBar"
+                android:inputType="numberDecimal"
+                app:startIconDrawable="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/ed_CreditcardUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:hint="Enter Your Credit Card  User Name"
+                style="@style/Theme.MaterialComponents.Light.NoActionBar"
+                app:startIconDrawable="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/ed_CreditcardExpirationdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:hint="Enter Your Credit Card Expiration date "
+                style="@style/Theme.MaterialComponents.Light.NoActionBar"
+                android:inputType="date"
+                app:startIconDrawable="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/cashonhbtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="175dp"
+                android:layout_height="63dp"
+                android:text="Cash On Delivery"
+                android:textColor="#E41259"
+                app:icon="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/ed_CashOnAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:hint="Enter Your Delivery Address"
+                style="@style/Theme.MaterialComponents.Light.NoActionBar"
+                android:inputType="text"
+                app:startIconDrawable="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/courrierhbtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="175dp"
+                android:layout_height="63dp"
+                android:text="Courrier"
+                android:textColor="#E41259"
+                app:icon="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/ed_CourierAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:hint="Enter Your Recieve Courrier Location"
+                style="@style/Theme.MaterialComponents.Light.NoActionBar"
+                android:inputType="text"
+                app:startIconDrawable="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/paYconfirmbtn"
+                android:layout_width="180dp"
+                android:layout_height="63dp"
+                android:text="Confirm"
+                android:textColor="#0B0A0A"
+                android:textSize="20dp"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tex1"
+                android:layout_marginBottom="7dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tx2"
+                />
+            <EditText
+                android:id="@+id/ed_payproof"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:hint="Enter Your payment proof"
+                style="@style/Theme.MaterialComponents.Light.NoActionBar"
+                app:startIconDrawable="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/ed_CsuserN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:hint="Enter Your Registered Email"
+                style="@style/Theme.MaterialComponents.Light.NoActionBar"
+                android:inputType="textEmailAddress"
+                app:startIconDrawable="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/paYorderbtn"
+                android:layout_width="180dp"
+                android:layout_height="63dp"
+                android:text="Order"
+                android:textColor="#0B0A0A"
+                android:textSize="20dp"
+                android:layout_marginBottom="40dp"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_navigation"
+        app:itemBackground="@color/design_default_color_on_primary"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu_navigation"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

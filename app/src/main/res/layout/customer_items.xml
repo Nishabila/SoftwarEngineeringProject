@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+       >
+    <TextView
+        android:id="@+id/cidtxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+
+       />
+        <TextView
+            android:id="@+id/cnametxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#2196F3"
+            />
+
+        <TextView
+            android:id="@+id/cemailtxt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#673AB7"
+             />
+    <TextView
+        android:id="@+id/cphonetxt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="#9C27B0"
+     />
+
+
+    </LinearLayout>
+
+
+
+
+
