@@ -127,7 +127,7 @@ public class AddProductUIPL extends AppCompatActivity {
                 description.setText("");
 
                 img.setImageResource(R.drawable.ic_launcher_foreground);
-                startActivity(new Intent(getApplicationContext(), Product.class));
+
                 finish();
             }
         });

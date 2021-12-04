@@ -20,7 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.almuhtazibah11.DAl.ShowTransactionDAL;
-import com.example.almuhtazibah11.OwnerDashboard;
+import com.example.almuhtazibah11.PresentationLayer.OwnerDashboardUIPL;
 
 import com.example.almuhtazibah11.R;
 
@@ -77,7 +77,7 @@ public class Money_transaction_adapterAL extends RecyclerView.Adapter<Money_tran
                             @Override
                             public void onResponse(String response) {
                                 Toast.makeText(context, "update successfully", Toast.LENGTH_SHORT).show();
-                                context.startActivity(new Intent(context, OwnerDashboard.class));
+                                context.startActivity(new Intent(context, OwnerDashboardUIPL.class));
                                 try {
                                     JSONObject res = new JSONObject(response);
                                 } catch (JSONException e) {

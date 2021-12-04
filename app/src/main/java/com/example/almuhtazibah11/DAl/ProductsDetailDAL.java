@@ -2,6 +2,7 @@ package com.example.almuhtazibah11.DAl;
 
 import android.content.Context;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -16,24 +17,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class ProductsDetailDAL  {
-    private static final String URL_PRODUCTS = "http://almuhtazibah.000webhostapp.com/Get_product.php";
+
    Context ctx;
-   List<Product> list;
-    public ProductsDetailDAL(Context ctx, List<Product>list) {
+   List<Product> productList;
+   ProductAdapterAL productAdapterAL;
+    public ProductsDetailDAL(Context ctx, List<Product>productList) {
         this.ctx = ctx;
-        this.list = list;
+       this.productList=productList;
     }
 
-
-
-
-    public void loadProducts( RecyclerView recyclerView) {
-
-
+    public void retrieve_product_data(RecyclerView rview1) {
+        productList = new ArrayList<>();
+        String URL_PRODUCTS = "http://almuhtazibah.000webhostapp.com/Get_product.php";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_PRODUCTS,
                 new Response.Listener<String>() {
                     @Override
@@ -42,19 +42,19 @@ public class ProductsDetailDAL  {
                             JSONArray array = new JSONArray(response);
                             for (int i = 0; i < array.length(); i++) {
                                 JSONObject product = array.getJSONObject(i);
-                                list.add(new Product(
+                                productList.add(new Product(
                                         product.getInt("product_id"),
                                         product.getString("product_name"),
-//                                        product.getString("product_color"),
                                         product.getString("product_price"),
-//                                        product.getString("product_description"),
                                         product.getString("Product_photo")
 
                                 ));
                             }
-                            ProductAdapterAL adapter = new ProductAdapterAL( ctx, list);
-                           recyclerView.setAdapter(adapter);
-                           // adapter.setOnItemClickListener(MainActivity.this::onItemClick);
+                            productAdapterAL= new ProductAdapterAL( ctx,productList);
+                            rview1.setLayoutManager(new LinearLayoutManager(ctx));
+                            rview1.setAdapter(productAdapterAL);
+
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

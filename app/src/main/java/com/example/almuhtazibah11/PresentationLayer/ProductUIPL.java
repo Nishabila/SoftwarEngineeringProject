@@ -19,9 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductUIPL extends AppCompatActivity {
+    List<Product> productList;
     RecyclerView rview1;
    ProductAdapterAL productAdapter;
-    List<Product> productList;
+
 
     public static final String EXTRA_URL = "imageUrl";
     public static final String EXTRA_PName = "Name";
@@ -31,14 +32,8 @@ public class ProductUIPL extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         rview1 = findViewById(R.id.rview1);
         rview1.setHasFixedSize(true);
-        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
-        rview1.setLayoutManager(staggeredGridLayoutManager);
-
-        productList=new ArrayList<>();
-      productAdapter = new ProductAdapterAL( this,  productList);
 
         //............Bottom Navigation...........
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
@@ -67,7 +62,16 @@ public class ProductUIPL extends AppCompatActivity {
                 return false;
             }
         });
-      productAdapter.loadproducts(rview1);
+
+        view_product();
+
     }
+    void view_product(){
+        productList=new ArrayList<>();
+        productAdapter = new ProductAdapterAL( this,  productList);
+        productAdapter.loadproducts(rview1);
+
+    }
+
 
 }

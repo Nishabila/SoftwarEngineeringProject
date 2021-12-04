@@ -9,25 +9,25 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.almuhtazibah11.APplicationLayer.ReviewAdapterAL;
-import com.example.almuhtazibah11.APplicationLayer.ReviewModel;
+import com.example.almuhtazibah11.APplicationLayer.ReviewAL;
 import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DisplayReviewUIPL extends AppCompatActivity {
-    List<ReviewModel> reviewList;
     RecyclerView recyclerView;
-    ReviewAdapterAL viewAdapter;
+    ReviewAdapterAL reviewAdapter;
+    List<ReviewAL> reviewList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_review);
         recyclerView=findViewById(R.id.reviewrecl3);
+        recyclerView.setHasFixedSize(true);
 
-
-    viewAdapter=new ReviewAdapterAL(this,reviewList);
 
         //............Bottom Navigation...........
 
@@ -59,7 +59,13 @@ public class DisplayReviewUIPL extends AppCompatActivity {
             }
         });
 
+        view_review();
 
-        viewAdapter.showReviewdata(recyclerView);
+    }
+
+    private void view_review() {
+        reviewList=new ArrayList<>();
+        reviewAdapter=new ReviewAdapterAL(this,reviewList);
+        reviewAdapter.showReviewdata(recyclerView);
     }
 }

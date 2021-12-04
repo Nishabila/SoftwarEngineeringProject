@@ -17,26 +17,29 @@ import java.util.List;
 public class ReviewAdapterAL extends RecyclerView.Adapter< ReviewAdapterAL.ViewHolder>{
 
     private Context context;
+    private List<ReviewAL> reviewList;
 
-    public ReviewAdapterAL(Context context, List<ReviewModel> reviewList) {
+    public ReviewAdapterAL(Context context, List<ReviewAL> reviewList) {
         this.context = context;
         this.reviewList = reviewList;
     }
 
-    private List<ReviewModel> reviewList;
+
     @NonNull
     @Override
     public  ReviewAdapterAL.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater=LayoutInflater.from(context);
-        View view= inflater.inflate(R.layout.rv_items_review,null);
-        return new  ReviewAdapterAL.ViewHolder(view);
+        //LayoutInflater inflater=LayoutInflater.from(context);
+      View view=LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_items_review, parent, false);
+
+        //View view= inflater.inflate(R.layout.rv_items_review,null);
+        return new  ViewHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull  ReviewAdapterAL.ViewHolder holder, int position) {
 
-       ReviewModel pro=reviewList.get(position);
+       ReviewAL pro=reviewList.get(position);
         holder.txtrid.setText("Review_ID: "+pro.getRId());
         holder.txtremail.setText("customer Email: "+pro.getEmail());
         holder.txtrvalue.setText( "Rating Value out of 5: "+pro.getValue());

@@ -16,12 +16,13 @@ import android.widget.Toast;
 import com.example.almuhtazibah11.APplicationLayer.CartAdapterAL;
 import com.example.almuhtazibah11.APplicationLayer.CustomCart;
 import com.example.almuhtazibah11.DAl.CartLocalDAL;
+import com.example.almuhtazibah11.DAl.LoginDAL;
 import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-import static com.example.almuhtazibah11.DAl.LoginDAL.IsLoggin;
+
 
 public class ShoppingCartUIPL extends AppCompatActivity {
     String Productnames, productColors, productSizes, ProductLengths, productPrice;
@@ -30,6 +31,8 @@ public class ShoppingCartUIPL extends AppCompatActivity {
     Button checkOutbtn;
     RecyclerView recyclerView;
     List<CustomCart> cartModelClasses;
+    CartAdapterAL cartadapterclass;
+    CartLocalDAL databaseHelperClass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,8 +80,8 @@ public class ShoppingCartUIPL extends AppCompatActivity {
         checkOutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    if (IsLoggin.equals("LoggdIN")) {
+
+                    if (LoginDAL.stateC) {
                         Intent i = new Intent(getApplicationContext(), PaymentUIPL.class);
                         i.putExtra("ProductName", Productnames);
                         i.putExtra("ProductColor", productColors);
@@ -86,14 +89,11 @@ public class ShoppingCartUIPL extends AppCompatActivity {
                         i.putExtra("ProductLength", ProductLengths);
                         i.putExtra("ProductPrice", productPrice);
                         startActivity(i);
+                        cartadapterclass.cartDelete();
+                        finish();
                     } else
-                        Toast.makeText(getApplicationContext(), "Please Register First!!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Please LOG IN First!!!", Toast.LENGTH_LONG).show();
 
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast.makeText(getApplicationContext(), "Try Again After Sign ut And Log In", Toast.LENGTH_LONG).show();
-                }
             }
 
         });
@@ -106,11 +106,11 @@ public class ShoppingCartUIPL extends AppCompatActivity {
         StringBuffer sblength = new StringBuffer();
 
 
-        CartLocalDAL databaseHelperClass = new CartLocalDAL(this);
+      databaseHelperClass = new CartLocalDAL(this);
         cartModelClasses = databaseHelperClass.getCartList();
 
         if (cartModelClasses.size() > 0) {
-            CartAdapterAL cartadapterclass = new CartAdapterAL(cartModelClasses, ShoppingCartUIPL.this);
+           cartadapterclass = new CartAdapterAL(cartModelClasses, ShoppingCartUIPL.this);
             recyclerView.setAdapter(cartadapterclass);
 
             for (int i = 0; i < cartModelClasses.size(); i++) {

@@ -10,23 +10,26 @@ import android.view.MenuItem;
 
 import com.example.almuhtazibah11.APplicationLayer.CustomerDetailsAdapterAL;
 import com.example.almuhtazibah11.APplicationLayer.CustomerModel;
+import com.example.almuhtazibah11.APplicationLayer.ProductAdapterAL;
 import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerInfoUIPL extends AppCompatActivity {
     List<CustomerModel> customerList;
     RecyclerView recyclerView;
-    CustomerDetailsAdapterAL viewAdapter;
   CustomerDetailsAdapterAL customerDetailsAdapterAL;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_info_u_i_p_l);
         recyclerView=findViewById(R.id.lstcd3);
+        recyclerView.setHasFixedSize(true);
 
-       customerDetailsAdapterAL=new CustomerDetailsAdapterAL(this,customerList);
         //............Bottom Navigation...........
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,7 +60,19 @@ public class CustomerInfoUIPL extends AppCompatActivity {
         });
 
 
-       customerDetailsAdapterAL.showCustomerwdata(recyclerView);
+
+
+
+        view_details();
 
     }
+    void view_details(){
+        customerList=new ArrayList<>();
+        customerDetailsAdapterAL=new CustomerDetailsAdapterAL(this,customerList);
+        customerDetailsAdapterAL.showCustomerdata(recyclerView);
+
+    }
+
+
+
 }

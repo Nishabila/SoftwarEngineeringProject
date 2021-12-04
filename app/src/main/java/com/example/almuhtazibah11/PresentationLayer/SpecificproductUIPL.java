@@ -1,9 +1,8 @@
-package com.example.almuhtazibah11;
+package com.example.almuhtazibah11.PresentationLayer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,13 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.almuhtazibah11.PresentationLayer.CustomizeProductUIPL;
-import com.example.almuhtazibah11.PresentationLayer.DahboardUIPL;
-import com.example.almuhtazibah11.PresentationLayer.DisplayReviewUIPL;
-import com.example.almuhtazibah11.PresentationLayer.ProductUIPL;
-import com.example.almuhtazibah11.PresentationLayer.ShoppingCartUIPL;
+import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
@@ -25,12 +19,12 @@ import static com.example.almuhtazibah11.PresentationLayer.ProductUIPL.EXTRA_PNa
 import static com.example.almuhtazibah11.PresentationLayer.ProductUIPL.EXTRA_Pprice;
 import static com.example.almuhtazibah11.PresentationLayer.ProductUIPL.EXTRA_URL;
 
-public class Specificproduct extends AppCompatActivity {
-    private static String TAG = Specificproduct.class.getSimpleName();
+public class SpecificproductUIPL extends AppCompatActivity {
+    private static String TAG = SpecificproductUIPL.class.getSimpleName();
     ImageView productImg;
     TextView textProductName, productprice,productcolor,productDescription;
-    Button cart;
-    String id;
+    Button hereButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +35,7 @@ public class Specificproduct extends AppCompatActivity {
         productprice=findViewById(R.id.pPrice);
         productcolor=findViewById(R.id.pColor);
         productDescription=findViewById(R.id.pdescription);
-
+        hereButton=findViewById(R.id.addcartbtn2);
 
 
         //............Bottom Navigation...........
@@ -72,15 +66,10 @@ public class Specificproduct extends AppCompatActivity {
                 return false;
             }
         });
+        order_customize();
+    }
 
-
-
-
-
-
-        cart=findViewById(R.id.addcartbtn2);
-
-
+    private void order_customize() {
         Intent intent = getIntent();
         int id_auto = intent.getExtras().getInt("id");
         String id_st=String.valueOf(id_auto);
@@ -90,50 +79,22 @@ public class Specificproduct extends AppCompatActivity {
         Picasso.get().load(imageUrl).into(productImg);
         textProductName.setText(pName);
         productprice.setText(price);
-        cart.setOnClickListener(new View.OnClickListener() {
+        hereButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(Specificproduct.this, CustomizeProductUIPL.class);
+                Intent i=new Intent(SpecificproductUIPL.this, CustomizeProductUIPL.class);
                 i.putExtra("ids",id_st);
                 i.putExtra("pnames", pName);
                 i.putExtra("pprices", price);
                 i.putExtra("pimgs", imageUrl);
                 startActivity(i);
-                // confirm();
 
             }
         });
 
 
-
-
     }
 
-    private void confirm(){
-        androidx.appcompat.app.AlertDialog.Builder alertDialogBuilde  = new androidx.appcompat.app.AlertDialog.Builder (this);
-        alertDialogBuilde.setMessage("Are you sure you want to Confirm Order?");
-
-        alertDialogBuilde.setPositiveButton("Yes",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-
-                        Toast.makeText(getApplicationContext(), "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-
-        alertDialogBuilde.setNegativeButton("No",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-
-                    }
-                });
-
-        androidx.appcompat.app.AlertDialog alertDialog = alertDialogBuilde.create();
-        alertDialog.show();
-    }
 
 
 }

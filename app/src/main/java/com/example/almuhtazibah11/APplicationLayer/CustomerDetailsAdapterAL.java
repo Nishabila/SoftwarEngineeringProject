@@ -18,19 +18,19 @@ import java.util.List;
 public class CustomerDetailsAdapterAL extends RecyclerView.Adapter<CustomerDetailsAdapterAL.ViewHolder>  {
 
     private Context context;
-
+    private List<CustomerModel> customerList;
     public CustomerDetailsAdapterAL(Context context, List<CustomerModel> customerList) {
         this.context = context;
         this.customerList = customerList;
     }
 
-    private List<CustomerModel> customerList;
+
     @NonNull
     @Override
     public CustomerDetailsAdapterAL.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater=LayoutInflater.from(context);
-        View view= inflater.inflate(R.layout.customer_items,null);
-        return new CustomerDetailsAdapterAL.ViewHolder(view);
+
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.customer_items,parent,false);
+        return new ViewHolder(view);
 
     }
 
@@ -51,9 +51,9 @@ public class CustomerDetailsAdapterAL extends RecyclerView.Adapter<CustomerDetai
 
 
 
-    public void showCustomerwdata(RecyclerView recyclerView) {
+    public void showCustomerdata(RecyclerView recyclerView) {
         ShowCustomersDAL showCustomersDAL=new ShowCustomersDAL(context,customerList);
-        showCustomersDAL.addCustomerdata(recyclerView);
+        showCustomersDAL.loadCustomerdata(recyclerView);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

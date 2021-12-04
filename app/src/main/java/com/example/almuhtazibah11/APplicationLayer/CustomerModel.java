@@ -10,6 +10,15 @@ public class CustomerModel {
 
     private int  cId;
     private  String cname;
+    private String email;
+    private String phoneNumber;
+
+    public CustomerModel(int cId, String cname, String email, String phoneNumber) {
+        this.cId = cId;
+        this.cname = cname;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 
 
     public String getCname() {
@@ -23,18 +32,5 @@ public class CustomerModel {
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
-    private String email;
-    private String phoneNumber;
-
-    public CustomerModel(int cId, String cname, String email, String phoneNumber) {
-        this.cId = cId;
-        this.cname = cname;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-    }
-
-
-
 
 }

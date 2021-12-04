@@ -3,8 +3,11 @@ package com.example.almuhtazibah11.PresentationLayer;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,15 +16,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.almuhtazibah11.APplicationLayer.BikashDecorator;
-import com.example.almuhtazibah11.APplicationLayer.CashOnDeliveryDecorator;
-import com.example.almuhtazibah11.APplicationLayer.CourrierDecorator;
 import com.example.almuhtazibah11.APplicationLayer.Order;
 import com.example.almuhtazibah11.APplicationLayer.OrderProductAL;
-import com.example.almuhtazibah11.APplicationLayer.OrderProductConcrete;
-import com.example.almuhtazibah11.APplicationLayer.creditDecorator;
 import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 public class PaymentUIPL extends AppCompatActivity implements View.OnClickListener {
     EditText bikashPhone, cardName, CardNUm, cardUser, cardExpire, cashAddress, courrierAddress,edproof,edusernm;
@@ -29,13 +28,7 @@ public class PaymentUIPL extends AppCompatActivity implements View.OnClickListen
     TextView textView1, textView2;
     int x, y;
     String option, text,customer_email,proof,name,price,pcolor,size,length,OrderID,pauO,deliO;
-    public static String bikashphonenum;
-   public static String cardnamestring;
-  public   static String cardnumString;
-    public static String cardUserString;
-   public static String cardExpString;
-    public static String cashaddressString;
-    public static String coureierAddsString;
+    public static String bikashphonenum,cardnamestring,cardnumString,cardUserString,cardExpString,cashaddressString,coureierAddsString;
     Order pp;
 
 
@@ -67,7 +60,11 @@ public class PaymentUIPL extends AppCompatActivity implements View.OnClickListen
         courrier.setOnClickListener(this);
         orderbtn.setOnClickListener(this);
 
-
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            NotificationChannel channel=new NotificationChannel("My Notification","My Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager=getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
         //............Bottom Navigation...........
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -160,26 +157,10 @@ public class PaymentUIPL extends AppCompatActivity implements View.OnClickListen
             cardExpString = cardExpire.getText().toString();
             cashaddressString = cashAddress.getText().toString();
             coureierAddsString = courrierAddress.getText().toString();
-
-            if (x == 1 && y == 1) {
-                pp = new CashOnDeliveryDecorator(new BikashDecorator(new OrderProductConcrete()));
-                option = pp.getOption();
-                text = pp.getDescription();
-            } else if (x == 1 && y == 2) {
-                pp = new CourrierDecorator(new BikashDecorator(new OrderProductConcrete()));
-                option = pp.getOption();
-                text = pp.getDescription();
-            } else if (x == 2 && y == 1) {
-                pp = new CashOnDeliveryDecorator(new creditDecorator(new OrderProductConcrete()));
-                option = pp.getOption();
-                text = pp.getDescription();
-            } else {
-                pp = new CourrierDecorator(new creditDecorator(new OrderProductConcrete()));
-                option = pp.getOption();
-                text = pp.getDescription();
-            }
-
-
+        PaymentUIPLFactory paymentUIPLFactory=new PaymentUIPLFactory();
+        pp=paymentUIPLFactory.getDecoratorCLs(x,y);
+        option = pp.getOption();
+        text = pp.getDescription();
             textView1.setText(option);
             textView2.setText(text);
             edusernm.setVisibility(View.VISIBLE);
@@ -189,7 +170,6 @@ public class PaymentUIPL extends AppCompatActivity implements View.OnClickListen
         if (v.getId() == R.id.paYorderbtn) {
             customer_email=edusernm.getText().toString();
             proof=edproof.getText().toString();
-
             edproof.setText("");
             edusernm.setText("");
             confirm();
@@ -209,8 +189,6 @@ public class PaymentUIPL extends AppCompatActivity implements View.OnClickListen
                         if(!customer_email.isEmpty()&& !proof.isEmpty()){
                             pp=new OrderProductAL(PaymentUIPL.this);
                             pp.insertorder(customer_email, name,price,size,length,pcolor,proof,pauO,deliO,text);
-                            Toast.makeText(getApplicationContext(), "Data Inserted Successfully", Toast.LENGTH_SHORT).show();
-
 
                         }
                         else
@@ -233,5 +211,6 @@ public class PaymentUIPL extends AppCompatActivity implements View.OnClickListen
         androidx.appcompat.app.AlertDialog alertDialog = alertDialogBuilde.create();
         alertDialog.show();
     }
+
 
 }

@@ -1,10 +1,17 @@
 package com.example.almuhtazibah11.APplicationLayer;
 
 
-public class ReviewModel {
+public class ReviewAL {
     private int  rId;
     private  String email;
     private String value;
+    private String cmt;
+    public ReviewAL(int rId, String email, String value, String cmt) {
+        this.rId = rId;
+        this.email = email;
+        this.value = value;
+        this.cmt = cmt;
+    }
 
     public int getRId() {
         return rId;
@@ -21,20 +28,6 @@ public class ReviewModel {
     public String getCmt() {
         return cmt;
     }
-
-    private String cmt;
-
-    public ReviewModel(int rId, String email, String value, String cmt) {
-        this.rId = rId;
-        this.email = email;
-        this.value = value;
-        this.cmt = cmt;
-    }
-
-
-
-
-
 
 
 

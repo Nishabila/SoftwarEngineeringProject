@@ -11,7 +11,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.almuhtazibah11.PresentationLayer.AddReviewUIPL;
 import com.example.almuhtazibah11.APplicationLayer.Singleton_RequestQueueInsertData;
-import com.example.almuhtazibah11.CustomerDashboard;
+import com.example.almuhtazibah11.PresentationLayer.CustomerDashboardUIPL;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +31,7 @@ public class AddReviewDAL {
 
 
                 Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
-                context.startActivity(new Intent(context, CustomerDashboard.class));
+                context.startActivity(new Intent(context, CustomerDashboardUIPL.class));
             }
         }, new Response.ErrorListener() {
             @Override

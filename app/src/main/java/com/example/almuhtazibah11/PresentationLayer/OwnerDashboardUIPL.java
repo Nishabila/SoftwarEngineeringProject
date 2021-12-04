@@ -1,4 +1,4 @@
-package com.example.almuhtazibah11;
+package com.example.almuhtazibah11.PresentationLayer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,28 +9,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.almuhtazibah11.PresentationLayer.AddReviewUIPL;
-import com.example.almuhtazibah11.DAl.LoginDAL;
-import com.example.almuhtazibah11.PresentationLayer.DahboardUIPL;
-import com.example.almuhtazibah11.PresentationLayer.DisplayReviewUIPL;
-import com.example.almuhtazibah11.PresentationLayer.ProductUIPL;
-import com.example.almuhtazibah11.PresentationLayer.ShoppingCartUIPL;
+import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import static com.example.almuhtazibah11.PresentationLayer.LoginUIPL.sp2;
 
-public class CustomerDashboard extends AppCompatActivity {
-    Button btnOrdr, btnAddReviewt,logout;
+
+public class OwnerDashboardUIPL extends AppCompatActivity  {
+    Button btnUP, btnOrD,btntr,btnCD,logout,btnaddp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.customer_dashboard);
-        btnAddReviewt=findViewById(R.id.reviewadd);
+        setContentView(R.layout.activity_owner_dashboard);
 
-        logout=findViewById(R.id.logoutCS);
+        btnCD=findViewById(R.id.CSDetails);
+        btnaddp=findViewById(R.id.pruductAdd);
+        btnOrD=findViewById(R.id.ordrNt);
+        btntr=findViewById(R.id.mnTranST);
+        btnUP=findViewById(R.id.pruductUp);
+        logout=findViewById(R.id.logoutONR);
 
-
-        //............Bottom Navigation...........
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -53,32 +50,47 @@ public class CustomerDashboard extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), DisplayReviewUIPL.class));
                         overridePendingTransition(0,0);
                         return true;
+
                 }
                 return false;
             }
         });
-
-        btnAddReviewt.setOnClickListener(new View.OnClickListener() {
+        btntr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent rint=new Intent(getApplicationContext(), AddReviewUIPL.class);
-                startActivity(rint);
+                startActivity(new Intent(OwnerDashboardUIPL.this, MoneyTransecUIPL.class));
             }
         });
+
+     btnaddp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), AddProductUIPL.class));
+            }
+        });
+
+        btnOrD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+             Intent iOD=new Intent(getApplicationContext(), OrderDetail2acUIPL.class);
+                startActivity(iOD);
+            }
+        });
+        btnCD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              Intent iCD=new Intent(getApplicationContext(), CustomerInfoUIPL.class);
+               startActivity(iCD);
+            }
+        });
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goToDashboard();
-                sp2.edit().putBoolean("logged",false).apply();
-                LoginDAL.IsLoggin="Loggedout";
+                LoginOwnerUIPL.stateO=false;
+                startActivity(new Intent(getApplicationContext(),DahboardUIPL.class));
             }
         });
-
     }
 
-    public void goToDashboard(){
-        Intent i = new Intent(this, DahboardUIPL.class);
-        startActivity(i);
-
-    }
 }

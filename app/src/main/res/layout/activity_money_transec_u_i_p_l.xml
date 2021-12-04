@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -29,12 +34,21 @@
         android:text="See here"
         android:textColor="#E41259"
         android:textSize="20dp" />
+    <Button
+        android:id="@+id/btn3"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="175dp"
+        android:layout_height="63dp"
+        android:visibility="gone"
+        android:text="See here"
+        android:textColor="#E41259"
+        android:textSize="20dp" />
 
 
 
 
 </LinearLayout>
-
+    </ScrollView>
 <com.google.android.material.bottomnavigation.BottomNavigationView
 android:layout_width="match_parent"
 android:layout_height="wrap_content"

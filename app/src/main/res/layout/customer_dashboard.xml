@@ -53,13 +53,11 @@
                 android:id="@+id/reviewadd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:layout_gravity="center"
                 android:text="Want to add Add Review!!"
                 android:textColor="@color/black"
                 android:textStyle="italic"
                 android:background="@color/white"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="100dp"
                 android:textColorHighlight="@color/teal_700"/>
 
 

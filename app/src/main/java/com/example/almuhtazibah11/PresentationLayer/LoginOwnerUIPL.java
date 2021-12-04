@@ -1,10 +1,9 @@
-package com.example.almuhtazibah11;
+package com.example.almuhtazibah11.PresentationLayer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,21 +12,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.almuhtazibah11.PresentationLayer.DahboardUIPL;
-import com.example.almuhtazibah11.PresentationLayer.DisplayReviewUIPL;
-import com.example.almuhtazibah11.PresentationLayer.ProductUIPL;
-import com.example.almuhtazibah11.PresentationLayer.ShoppingCartUIPL;
+import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class LoginOwner extends AppCompatActivity {
-    EditText username;
-    EditText password;
+public class LoginOwnerUIPL extends AppCompatActivity {
+    EditText username, password;;
     Button loginbtn;
-    String stUser, stPass;
-    String ownerpass;
+    String stUser, stPass,ownerpass;
     TextView textView;
-    public static SharedPreferences sp;
-
+    public static Boolean stateO=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,39 +57,27 @@ public class LoginOwner extends AppCompatActivity {
             }
         });
 
-        sp = getSharedPreferences("login", MODE_PRIVATE);
-        if (sp.getBoolean("logged", false)) {
-            goToMainActivity();
-        }
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                if (username.getText().toString().equals("")) {
-                    Toast.makeText(LoginOwner.this, "Enter Email Address", Toast.LENGTH_SHORT).show();
-
-                } else if (password.getText().toString().equals("")) {
-                    Toast.makeText(LoginOwner.this, "Enter Valid Password", Toast.LENGTH_SHORT).show();
-
-                } else {
-
-                    stUser = username.getText().toString().trim();
-                    stPass = password.getText().toString().trim();
-                    if (stUser.equalsIgnoreCase("admin@gmail.com") && stPass.equalsIgnoreCase("admin")) {
+                if (username.getText().toString().equals("") || password.getText().toString().equals("")) {
+                    Toast.makeText(LoginOwnerUIPL.this, "Enter All Field Correctly", Toast.LENGTH_SHORT).show();
+                }  else {
+                    if (username.getText().toString().trim().equalsIgnoreCase("admin@gmail.com") && password.getText().toString().trim().equalsIgnoreCase("admin")) {
                         username.setText("");
                         password.setText("");
-                        ownerpass = "passed";
-                        goToMainActivity();
+                        startActivity(new Intent(getApplicationContext(), OwnerDashboardUIPL.class));
+                        stateO=true;
                         Toast.makeText(getApplicationContext(), "Welcome as Owner", Toast.LENGTH_SHORT).show();
+                        finish();
 
                     } else {
                         textView.setText("Please contact 018******* to know Owner Email Address & Password");
                         Toast.makeText(getApplicationContext(), "Invalid Owner", Toast.LENGTH_SHORT).show();
 
                     }
-                    sp.edit().putBoolean("logged", true).apply();
+
                 }
             }
         });
@@ -104,9 +85,4 @@ public class LoginOwner extends AppCompatActivity {
     }
 
 
-    public void goToMainActivity() {
-        Intent i = new Intent(this, OwnerDashboard.class);
-        startActivity(i);
-        finish();
-    }
 }

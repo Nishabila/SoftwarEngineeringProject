@@ -24,8 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class CustomizeProductUIPL extends AppCompatActivity {
     EditText edSize,edLength,edColor;
     Button cart;
-    TextView textId,testname,textPrice;
-    TextView lblmsg;
+    TextView textId,testname,textPrice,lblmsg;
     String stColor,stLength,stSize,pname,pprice,pDid;
     int pid;
 
@@ -35,7 +34,6 @@ public class CustomizeProductUIPL extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customize_product);
 
-
         edSize=findViewById(R.id.ed_CpSize);
         edLength=findViewById(R.id.ed_CpLength);
         edColor=findViewById(R.id.ed_CpColor);
@@ -43,14 +41,11 @@ public class CustomizeProductUIPL extends AppCompatActivity {
         testname=findViewById(R.id.cpname);
         textPrice=findViewById(R.id.cpPrice);
         lblmsg=findViewById(R.id.lblmsge);
-        pDid=getIntent().getStringExtra("ids");
-        pid=Integer.valueOf(pDid);
-        pname=getIntent().getStringExtra("pnames");
-        pprice=getIntent().getStringExtra("pprices");
-        textId.setText(pDid);
-        testname.setText(pname);
-        textPrice.setText(pprice);
         cart=findViewById(R.id.btncart);
+
+        set_PInfo();
+
+
         //............Bottom Navigation...........
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -88,28 +83,36 @@ public class CustomizeProductUIPL extends AppCompatActivity {
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                //Toast.makeText(getApplicationContext(), ctgtananame[i], Toast.LENGTH_LONG).show();
                 String DD = colorname[position];
                 edColor.setText(DD);
             }
-
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) { }
         });
 
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 validate();
             }
         });
 
 
     }
+
+    private void set_PInfo() {
+
+        pDid=getIntent().getStringExtra("ids");
+        pid=Integer.valueOf(pDid);
+        pname=getIntent().getStringExtra("pnames");
+        pprice=getIntent().getStringExtra("pprices");
+        textId.setText(pDid);
+        testname.setText(pname);
+        textPrice.setText(pprice);
+
+    }
+
+
 
     private void validate() {
         stColor = edColor.getText().toString();

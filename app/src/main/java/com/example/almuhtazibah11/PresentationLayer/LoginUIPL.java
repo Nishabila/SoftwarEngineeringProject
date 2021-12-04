@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.almuhtazibah11.APplicationLayer.LoginAL;
-import com.example.almuhtazibah11.CustomerDashboard;
 import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -26,8 +25,9 @@ public class LoginUIPL extends AppCompatActivity {
     Button loginbtn;
     String stUser, stPass;
     TextView textView;
-    public   static SharedPreferences sp2;
+    public static SharedPreferences sp2;
     LoginAL loginAL;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class LoginUIPL extends AppCompatActivity {
         password = findViewById(R.id.ed_passlgcs);
         loginbtn = findViewById(R.id.logincs);
         textView = findViewById(R.id.customer_log_inTextcs);
-      loginAL=new LoginAL(this);
+        loginAL = new LoginAL(this);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -57,16 +57,13 @@ public class LoginUIPL extends AppCompatActivity {
                         return true;
                     case R.id.reviews10:
                         startActivity(new Intent(getApplicationContext(), DisplayReviewUIPL.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
             }
         });
-        sp2 = getSharedPreferences("login",MODE_PRIVATE);
-        if(sp2.getBoolean("logged",false)){
-            goToDashBoard();
-        }
+
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,9 +80,10 @@ public class LoginUIPL extends AppCompatActivity {
 
                     stUser = username.getText().toString().trim();
                     stPass = password.getText().toString().trim();
-                  loginAL.login(stUser,stPass);
+                    loginAL.login(stUser, stPass);
                     username.setText("");
                     password.setText("");
+                    finish();
                 }
             }
         });
@@ -93,10 +91,4 @@ public class LoginUIPL extends AppCompatActivity {
     }
 
 
-
-    public void goToDashBoard(){
-        Intent i = new Intent(this, CustomerDashboard.class);
-        startActivity(i);
-        finish();
-    }
 }

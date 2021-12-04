@@ -7,6 +7,8 @@ public class CustomCart {
    private String price;
     private String size;
    private String color;
+    private String LENGTH;
+    private String pdid;
 
     public Integer getId() {
         return id;
@@ -64,8 +66,7 @@ public class CustomCart {
         this.pdid = pdid;
     }
 
-   private String LENGTH;
-   private String pdid;
+
     public CustomCart( String pdid,String name, String price, String size, String color, String LENGTH) {
         this.name = name;
         this.price = price;

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.almuhtazibah11.DAl.ProductsDetailDAL;
 import com.example.almuhtazibah11.R;
-import com.example.almuhtazibah11.Specificproduct;
+import com.example.almuhtazibah11.PresentationLayer.SpecificproductUIPL;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -28,15 +28,13 @@ public class ProductAdapterAL extends RecyclerView.Adapter<ProductAdapterAL.Prod
 
 
     private Context mCtx;
+    private List<Product> productList;
 
     public ProductAdapterAL(Context mCtx, List<Product> productList) {
         this.mCtx = mCtx;
         this.productList = productList;
 
     }
-
-    private List<Product> productList;
-
 
 
     @Override
@@ -57,7 +55,7 @@ public class ProductAdapterAL extends RecyclerView.Adapter<ProductAdapterAL.Prod
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent detailIntent = new Intent(mCtx, Specificproduct.class);
+                Intent detailIntent = new Intent(mCtx, SpecificproductUIPL.class);
                 Product pItem =productList.get(position);
                 detailIntent.putExtra("id",pItem.getId());
                 detailIntent.putExtra(EXTRA_URL, pItem.getPhoto());
@@ -85,7 +83,7 @@ public class ProductAdapterAL extends RecyclerView.Adapter<ProductAdapterAL.Prod
 
     public void loadproducts(RecyclerView recyclerView) {
         ProductsDetailDAL productsDetailDAL=new ProductsDetailDAL(mCtx,productList);
-        productsDetailDAL.loadProducts(recyclerView);
+        productsDetailDAL.retrieve_product_data(recyclerView);
     }
 
 

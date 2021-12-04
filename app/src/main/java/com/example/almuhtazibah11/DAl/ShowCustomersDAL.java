@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShowCustomersDAL {
-    private Context context;
-    private List<CustomerModel> customerList;
-
+   Context context;
+     List<CustomerModel> customerList;
+    CustomerDetailsAdapterAL viewAdapter;
 
     public ShowCustomersDAL (Context context, List<CustomerModel> customerList) {
         this.context = context;
@@ -31,9 +31,9 @@ public class ShowCustomersDAL {
     }
 
 
-    public void  addCustomerdata(RecyclerView recyclerView){
-       final String URL_Customer_details = "https://almuhtazibah.000webhostapp.com/customer_details.php";
+    public void loadCustomerdata(RecyclerView recyclerView){
         customerList=new ArrayList<>();
+       final String URL_Customer_details = "https://almuhtazibah.000webhostapp.com/customer_details.php";
         StringRequest stringRequest=new StringRequest(Request.Method.GET, URL_Customer_details, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -48,8 +48,7 @@ public class ShowCustomersDAL {
                                 ob.getString("Mobile_no")
                         ));
                     }
-
-                   CustomerDetailsAdapterAL viewAdapter=new CustomerDetailsAdapterAL(context,customerList);
+                    viewAdapter=new CustomerDetailsAdapterAL(context,customerList);
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(context));
                     recyclerView.setAdapter(viewAdapter);

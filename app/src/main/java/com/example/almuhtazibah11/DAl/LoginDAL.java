@@ -10,20 +10,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.almuhtazibah11.APplicationLayer.Singleton_RequestQueueInsertData;
-import com.example.almuhtazibah11.CustomerDashboard;
+import com.example.almuhtazibah11.PresentationLayer.CustomerDashboardUIPL;
 import com.example.almuhtazibah11.PresentationLayer.DahboardUIPL;
 import com.example.almuhtazibah11.PresentationLayer.LoginUIPL;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.example.almuhtazibah11.PresentationLayer.LoginUIPL.sp2;
-
 public class LoginDAL {
-
-    public static String IsLoggin;
     Context context;
-
+  public  static Boolean stateC=false;
     public LoginDAL(Context context) {
         this.context = context;
     }
@@ -40,11 +36,9 @@ public class LoginDAL {
 
                validate=response;
                 if (validate.endsWith("found")) {
-
                     Toast.makeText(context, "Welcome to Al Muntazibah As a Customer", Toast.LENGTH_SHORT).show();
-                    sp2.edit().putBoolean("logged",true).apply();
-                    IsLoggin="LoggdIN";
-                    Intent i = new Intent(context, CustomerDashboard.class);
+                    stateC=true;
+                    Intent i = new Intent(context, CustomerDashboardUIPL.class);
                     context.startActivity(i);
                 } else {
                     Intent logint = new Intent(context, DahboardUIPL.class);

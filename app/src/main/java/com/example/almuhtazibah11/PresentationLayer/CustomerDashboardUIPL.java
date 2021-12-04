@@ -9,23 +9,30 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.almuhtazibah11.PresentationLayer.AddReviewUIPL;
 import com.example.almuhtazibah11.DAl.LoginDAL;
+import com.example.almuhtazibah11.PresentationLayer.DahboardUIPL;
+import com.example.almuhtazibah11.PresentationLayer.DisplayReviewUIPL;
+import com.example.almuhtazibah11.PresentationLayer.ProductUIPL;
+import com.example.almuhtazibah11.PresentationLayer.ShoppingCartUIPL;
 import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class DahboardUIPL extends AppCompatActivity {
-    Button owner,customer,signup;
+import static com.example.almuhtazibah11.PresentationLayer.LoginUIPL.sp2;
+
+public class CustomerDashboardUIPL extends AppCompatActivity {
+    Button btnOrdr, btnAddReviewt,logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dahboard);
-        owner = findViewById(R.id.owner_log_in);
-        customer = findViewById(R.id.customer_log_in);
-        signup=findViewById(R.id.signUpGobtn);
+        setContentView(R.layout.customer_dashboard);
+        btnAddReviewt=findViewById(R.id.reviewadd);
+
+        logout=findViewById(R.id.logoutCS);
 
 
+        //............Bottom Navigation...........
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.dashboard);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -40,47 +47,35 @@ public class DahboardUIPL extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.dashboard:
+                        startActivity(new Intent(getApplicationContext(), DahboardUIPL.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.reviews10:
                         startActivity(new Intent(getApplicationContext(), DisplayReviewUIPL.class));
                         overridePendingTransition(0,0);
                         return true;
-
                 }
                 return false;
             }
         });
 
-
-
-        owner.setOnClickListener(new View.OnClickListener() {
+        btnAddReviewt.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if(LoginOwnerUIPL.stateO==true){
-                    startActivity(new Intent(getApplicationContext(), OwnerDashboardUIPL.class));
-                }
-                else
-                    startActivity(new Intent(getApplicationContext(), LoginOwnerUIPL.class));
+            public void onClick(View view) {
+                Intent rint=new Intent(getApplicationContext(), AddReviewUIPL.class);
+                startActivity(rint);
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoginDAL.stateC=false;
+                startActivity(new Intent(getApplicationContext(), DahboardUIPL.class));
             }
         });
 
-        customer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(LoginDAL.stateC==true){
-                    startActivity(new Intent(getApplicationContext(), CustomerDashboardUIPL.class));
-                }
-               else
-                    startActivity(new Intent(getApplicationContext(), LoginUIPL.class));
-
-            }
-        });
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent is = new Intent(getApplicationContext(), SignUpUIPL.class);
-                startActivity(is);
-            }
-        });
     }
+
+
+
 }

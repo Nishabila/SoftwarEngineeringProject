@@ -5,12 +5,13 @@ public class Product {
     private String name;
 
     private String price;
+    private String photo;
 
     public String getPhoto() {
         return photo;
     }
 
-    private String photo;
+
 
     public Product(int id, String name, String price, String photo) {
         this.id = id;
