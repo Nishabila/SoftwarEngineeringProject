@@ -14,7 +14,6 @@ import com.example.almuhtazibah11.DAl.CartLocalDAL;
 import com.example.almuhtazibah11.R;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CartAdapterAL extends RecyclerView.Adapter<CartAdapterAL.ViewHolder> {
@@ -61,14 +60,7 @@ List<CustomCart>customCartList;
         });
 
     }
-public void cartDelete(){
-        databaseHelperClass.deleteAll();
-}
-    public List<CustomCart> cartList(){
-        List<CustomCart> storeCart = new ArrayList<>();
-        storeCart=databaseHelperClass.getCartList();
-        return storeCart;
-    }
+
     @Override
     public int getItemCount() {
         return customCartList.size();

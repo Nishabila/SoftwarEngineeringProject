@@ -9,16 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.almuhtazibah11.PresentationLayer.AddReviewUIPL;
 import com.example.almuhtazibah11.DAl.LoginDAL;
-import com.example.almuhtazibah11.PresentationLayer.DahboardUIPL;
-import com.example.almuhtazibah11.PresentationLayer.DisplayReviewUIPL;
-import com.example.almuhtazibah11.PresentationLayer.ProductUIPL;
-import com.example.almuhtazibah11.PresentationLayer.ShoppingCartUIPL;
 import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import static com.example.almuhtazibah11.PresentationLayer.LoginUIPL.sp2;
 
 public class CustomerDashboardUIPL extends AppCompatActivity {
     Button btnOrdr, btnAddReviewt,logout;
@@ -47,7 +40,7 @@ public class CustomerDashboardUIPL extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(), DahboardUIPL.class));
+                        startActivity(new Intent(getApplicationContext(), DashboardUIPL.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.reviews10:
@@ -70,7 +63,7 @@ public class CustomerDashboardUIPL extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 LoginDAL.stateC=false;
-                startActivity(new Intent(getApplicationContext(), DahboardUIPL.class));
+                startActivity(new Intent(getApplicationContext(), DashboardUIPL.class));
             }
         });
 

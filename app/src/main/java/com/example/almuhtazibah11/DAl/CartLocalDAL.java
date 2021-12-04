@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-import com.example.almuhtazibah11.APplicationLayer.CartBuilder;
 import com.example.almuhtazibah11.APplicationLayer.CustomCart;
 
 import java.util.ArrayList;
@@ -90,8 +89,7 @@ public class CartLocalDAL extends SQLiteOpenHelper {
                 String size = cursor.getString(4);
                 String color = cursor.getString(5);
                 String length = cursor.getString(6);
-                //storeCart.add(new CustomCart(id,pid,name,price,size,color,length));
-                storeCart.add(new CartBuilder().setPdid(pid).setSize(size).setPrice(price).setLENGTH(length).setColor(color).setName(name).build());
+                storeCart.add(new CustomCart(id,pid,name,price,size,color,length));
             }while (cursor.moveToNext());
         }
         cursor.close();
@@ -109,5 +107,4 @@ public class CartLocalDAL extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("delete from "+ TABLE_NAME);
         sqLiteDatabase.close();
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.almuhtazibah11.DAl;
+package com.example.almuhtazibah11;
 
 
 import android.app.Activity;

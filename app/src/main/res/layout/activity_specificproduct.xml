@@ -91,7 +91,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="25dp"
                             android:text="\nAre you want to order? Please click "
-                            android:textColor="#747D81"
+                            android:textColor="@color/white"
                             android:textStyle="bold"
                             />
 

@@ -31,7 +31,6 @@ public class ShoppingCartUIPL extends AppCompatActivity {
     Button checkOutbtn;
     RecyclerView recyclerView;
     List<CustomCart> cartModelClasses;
-    CartAdapterAL cartadapterclass;
     CartLocalDAL databaseHelperClass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class ShoppingCartUIPL extends AppCompatActivity {
         itemnum = findViewById(R.id.totalItemCount);
         totaotk = findViewById(R.id.totaltkCount);
         checkOutbtn = findViewById(R.id.checkoutcart);
-
+        databaseHelperClass = new CartLocalDAL(this);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.cart);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -55,7 +54,7 @@ public class ShoppingCartUIPL extends AppCompatActivity {
                     case R.id.cart:
                         return true;
                     case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(), DahboardUIPL.class));
+                        startActivity(new Intent(getApplicationContext(), DashboardUIPL.class));
                         overridePendingTransition(0, 0);
                         return true;
 
@@ -88,9 +87,8 @@ public class ShoppingCartUIPL extends AppCompatActivity {
                         i.putExtra("ProductSize", productSizes);
                         i.putExtra("ProductLength", ProductLengths);
                         i.putExtra("ProductPrice", productPrice);
+                        databaseHelperClass.deleteAll();
                         startActivity(i);
-                        cartadapterclass.cartDelete();
-                        finish();
                     } else
                         Toast.makeText(getApplicationContext(), "Please LOG IN First!!!", Toast.LENGTH_LONG).show();
 
@@ -106,11 +104,11 @@ public class ShoppingCartUIPL extends AppCompatActivity {
         StringBuffer sblength = new StringBuffer();
 
 
-      databaseHelperClass = new CartLocalDAL(this);
+       // CartLocalDAL databaseHelperClass = new CartLocalDAL(this);
         cartModelClasses = databaseHelperClass.getCartList();
 
         if (cartModelClasses.size() > 0) {
-           cartadapterclass = new CartAdapterAL(cartModelClasses, ShoppingCartUIPL.this);
+            CartAdapterAL cartadapterclass = new CartAdapterAL(cartModelClasses, ShoppingCartUIPL.this);
             recyclerView.setAdapter(cartadapterclass);
 
             for (int i = 0; i < cartModelClasses.size(); i++) {

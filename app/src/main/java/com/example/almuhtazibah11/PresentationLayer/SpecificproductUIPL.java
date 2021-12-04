@@ -54,7 +54,7 @@ public class SpecificproductUIPL extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(), DahboardUIPL.class));
+                        startActivity(new Intent(getApplicationContext(), DashboardUIPL.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.reviews10:

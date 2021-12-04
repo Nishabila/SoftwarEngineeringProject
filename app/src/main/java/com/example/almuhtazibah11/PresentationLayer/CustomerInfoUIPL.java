@@ -10,7 +10,6 @@ import android.view.MenuItem;
 
 import com.example.almuhtazibah11.APplicationLayer.CustomerDetailsAdapterAL;
 import com.example.almuhtazibah11.APplicationLayer.CustomerModel;
-import com.example.almuhtazibah11.APplicationLayer.ProductAdapterAL;
 import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -46,7 +45,7 @@ public class CustomerInfoUIPL extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(), DahboardUIPL.class));
+                        startActivity(new Intent(getApplicationContext(), DashboardUIPL.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.reviews10:

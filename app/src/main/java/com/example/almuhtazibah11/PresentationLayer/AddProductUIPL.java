@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.almuhtazibah11.APplicationLayer.ADDProductAL;
-import com.example.almuhtazibah11.APplicationLayer.Product;
 import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
@@ -70,7 +69,7 @@ public class AddProductUIPL extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(), DahboardUIPL.class));
+                        startActivity(new Intent(getApplicationContext(), DashboardUIPL.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.reviews10:

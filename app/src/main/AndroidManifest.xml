@@ -28,7 +28,7 @@
         <activity android:name=".PresentationLayer.SignUpUIPL" />
         <activity android:name=".PresentationLayer.CustomizeProductUIPL" />
         <activity android:name=".PresentationLayer.DisplayReviewUIPL" />
-        <activity android:name=".PresentationLayer.DahboardUIPL" />
+        <activity android:name=".PresentationLayer.DashboardUIPL" />
         <activity android:name=".PresentationLayer.ShoppingCartUIPL" />
         <activity android:name=".PresentationLayer.SpecificproductUIPL" />
         <activity android:name=".APplicationLayer.Home">

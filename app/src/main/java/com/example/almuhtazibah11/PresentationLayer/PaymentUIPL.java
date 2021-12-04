@@ -81,7 +81,7 @@ public class PaymentUIPL extends AppCompatActivity implements View.OnClickListen
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(), DahboardUIPL.class));
+                        startActivity(new Intent(getApplicationContext(), DashboardUIPL.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.reviews10:
@@ -187,7 +187,7 @@ public class PaymentUIPL extends AppCompatActivity implements View.OnClickListen
                     public void onClick(DialogInterface arg0, int arg1) {
 
                         if(!customer_email.isEmpty()&& !proof.isEmpty()){
-                            pp=new OrderProductAL(PaymentUIPL.this);
+                           OrderProductAL pp=new OrderProductAL(PaymentUIPL.this);
                             pp.insertorder(customer_email, name,price,size,length,pcolor,proof,pauO,deliO,text);
 
                         }

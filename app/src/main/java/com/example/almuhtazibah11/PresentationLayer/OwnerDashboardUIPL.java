@@ -43,7 +43,7 @@ public class OwnerDashboardUIPL extends AppCompatActivity  {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(), DahboardUIPL.class));
+                        startActivity(new Intent(getApplicationContext(), DashboardUIPL.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.reviews10:
@@ -88,7 +88,7 @@ public class OwnerDashboardUIPL extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 LoginOwnerUIPL.stateO=false;
-                startActivity(new Intent(getApplicationContext(),DahboardUIPL.class));
+                startActivity(new Intent(getApplicationContext(), DashboardUIPL.class));
             }
         });
     }

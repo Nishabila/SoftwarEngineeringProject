@@ -11,7 +11,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.almuhtazibah11.APplicationLayer.Singleton_RequestQueueInsertData;
 import com.example.almuhtazibah11.PresentationLayer.CustomerDashboardUIPL;
-import com.example.almuhtazibah11.PresentationLayer.DahboardUIPL;
+import com.example.almuhtazibah11.PresentationLayer.DashboardUIPL;
 import com.example.almuhtazibah11.PresentationLayer.LoginUIPL;
 
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class LoginDAL {
                     Intent i = new Intent(context, CustomerDashboardUIPL.class);
                     context.startActivity(i);
                 } else {
-                    Intent logint = new Intent(context, DahboardUIPL.class);
+                    Intent logint = new Intent(context, DashboardUIPL.class);
                     context.startActivity(logint);
                     Toast.makeText(context, "please Sign In First!!", Toast.LENGTH_SHORT).show();
 

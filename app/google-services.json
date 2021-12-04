@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1030373614025",
+    "project_id": "almuhtazibah11nitofiaction",
+    "storage_bucket": "almuhtazibah11nitofiaction.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030373614025:android:a9fcc772ac45516bd98818",
+        "android_client_info": {
+          "package_name": "com.example.almuhtazibah11"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030373614025-h1tcfrsr00nvfjaflhrsgl0b644gbbjh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE8WcYxKtK-sp5O_PANMD3FrDr1H3GXUU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030373614025-h1tcfrsr00nvfjaflhrsgl0b644gbbjh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

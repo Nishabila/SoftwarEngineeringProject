@@ -13,7 +13,7 @@ import com.example.almuhtazibah11.DAl.LoginDAL;
 import com.example.almuhtazibah11.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class DahboardUIPL extends AppCompatActivity {
+public class DashboardUIPL extends AppCompatActivity {
     Button owner,customer,signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

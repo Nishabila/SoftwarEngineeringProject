@@ -7,7 +7,7 @@ import com.example.almuhtazibah11.DAl.OrderProductsDAL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderProductAL implements Order,Subject {
+public class OrderProductAL implements Subject {
     private List<Observer> observerList;
     private String customer_email, name,price,size,length,pcolor,proof,pauO,deliO,text ;
     Context context;
@@ -15,14 +15,6 @@ public class OrderProductAL implements Order,Subject {
     public OrderProductAL(Context context) {
         observerList=new ArrayList<Observer>();
         this.context = context;
-    }
-    @Override
-    public String getOption() {
-        return null;
-    }
-    @Override
-    public String getDescription() {
-        return null;
     }
 
     @Override
